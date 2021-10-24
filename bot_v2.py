@@ -271,7 +271,10 @@ class Music(commands.Cog):
                 gotcount = 0
 
     async def playlist(self, ctx, url):
-        url.split("list=")[1]
+        playlist_id = url.split("list=")[1]
+        r = requests.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId="+playlist_id +"&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA")
+        await ctx.send(r.text)
+        await ctx.send(r.url)
                 
     @commands.command(name="update")
     async def update(self, ctx):
