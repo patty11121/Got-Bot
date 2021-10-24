@@ -279,8 +279,8 @@ class Music(commands.Cog):
             requests_url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlist_id + "&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA"
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
-            for item in json[items]:
-                await ctx.send(item[resourceId][videoId])
+            for item in json['items']:
+                await ctx.send(item['resourceId']['videoId'])
 
         except Exception as e:
             await ctx.send(e)
@@ -310,7 +310,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.1b-7"
+    return "Version 1.1b-8"
 
     
 if __name__ == '__main__':
