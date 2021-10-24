@@ -289,7 +289,7 @@ class Music(commands.Cog):
             requests_url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlist_id + "&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA"
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
-            for item in json_file['items']:
+            async for item in json_file['items']:
                 await self.play_internal(ctx, item['snippet']['resourceId']['videoId'])
                 #await ctx.send(item['snippet']['resourceId']['videoId'])
 
@@ -322,7 +322,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.2c"
+    return "Version 1.2d"
 
     
 if __name__ == '__main__':
