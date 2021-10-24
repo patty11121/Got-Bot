@@ -1,4 +1,4 @@
-import pip
+    import pip
 import discord
 import asyncio
 import os
@@ -270,6 +270,9 @@ class Music(commands.Cog):
                 await ctx.send(got10)
                 got10 = ""
                 gotcount = 0
+
+    async def playlist(self, ctx, url):
+        url.split("list=")[1]
                 
     @commands.command(name="update")
     async def update(self, ctx):
@@ -277,6 +280,7 @@ class Music(commands.Cog):
         os.chdir(direct)
         await ctx.send("begining update - use .join to rejoin")
         os.system("python3 updater.py")
+        os.system("pip3 install requests")
         await reboot(direct)
         #help
         
