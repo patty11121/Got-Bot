@@ -281,7 +281,7 @@ class Music(commands.Cog):
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
             for item in json_file['items']:
-                await self.play_internal(ctx, item['snippet']['resourceId']['videoId'])
+                await self.play(ctx, item['snippet']['resourceId']['videoId'])
                 #await ctx.send(item['snippet']['resourceId']['videoId'])
 
 
@@ -313,7 +313,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.2D"
+    return "Version 1.2e"
 
     
 if __name__ == '__main__':
