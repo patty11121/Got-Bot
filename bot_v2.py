@@ -277,8 +277,9 @@ class Music(commands.Cog):
             playlist_id = url.split("list=")[1]
             requests_url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlist_id + "&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA"
             r = requests.get(requests_url)
-            await ctx.send(r.text)
-            await ctx.send(requests_url)
+            for item in r.items:
+                await ctx.send(item.resourceId.videoId)
+
         except Exception as e:
             await ctx.send(e)
             await ctx.send(requests_url)
