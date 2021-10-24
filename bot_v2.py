@@ -270,6 +270,7 @@ class Music(commands.Cog):
                 got10 = ""
                 gotcount = 0
 
+    @commands.command(name="playlist")
     async def playlist(self, ctx, url):
         playlist_id = url.split("list=")[1]
         r = requests.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId="+playlist_id +"&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA")
