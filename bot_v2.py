@@ -280,7 +280,7 @@ class Music(commands.Cog):
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
             for item in json_file['items']:
-                play(ctx, item['snippet']['resourceId']['videoId'])
+                self.play(ctx, item['snippet']['resourceId']['videoId'])
 
         except Exception as e:
             await ctx.send(e)
