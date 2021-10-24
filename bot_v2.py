@@ -275,6 +275,7 @@ class Music(commands.Cog):
     async def update(self, ctx):
         direct = os.getcwd()
         os.chdir(direct)
+        await ctx.send("begining update - use .join to rejoin")
         os.system("python3 updater.py")
         await reboot(direct)
         #help
