@@ -261,14 +261,15 @@ class Music(commands.Cog):
     async def talk(self, ctx):
         f = open("gottext.txt","r")
         y = f.read()
-        await ctx.send(y)
-        #for x in range(0,len(y)):
-        #    got10 += y[x]
-        #    gotcount += 1
-        #    if gotcount == 100:
-        #        await ctx.send(got10)
-        #        got10 = ""
-        #        gotcount = 0
+        got10 = ""
+        gotcount = 10
+        for x in range(0,len(y)):
+            got10 += y[x]
+            gotcount += 1
+            if gotcount == 200:
+                await ctx.send(got10)
+                got10 = ""
+                gotcount = 0
                 
     @commands.command(name="update")
     async def update(self, ctx):
