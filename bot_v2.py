@@ -1,5 +1,6 @@
 import discord
 import asyncio
+import requests
 import os
 import git
 import sys
@@ -302,7 +303,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.1b-1"
+    return "Version 1.1b-2"
 
     
 if __name__ == '__main__':
