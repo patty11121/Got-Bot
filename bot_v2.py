@@ -278,7 +278,7 @@ class Music(commands.Cog):
             playlist_id = url.split("list=")[1]
             requests_url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlist_id + "&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA"
             r = requests.get(requests_url)
-            json = json.loads(r)
+            json_file = json.loads(r)
             for item in json.items:
                 await ctx.send(item.resourceId.videoId)
 
@@ -310,7 +310,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.1b-5"
+    return "Version 1.1b-6"
 
     
 if __name__ == '__main__':
