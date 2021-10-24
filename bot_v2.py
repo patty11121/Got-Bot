@@ -280,7 +280,7 @@ class Music(commands.Cog):
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
             for item in json_file['items']:
-                self.play(item['snippet']['resourceId']['videoId'])
+                await self.play(item['snippet']['resourceId']['videoId'])
                 await ctx.send(item['snippet']['resourceId']['videoId'])
 
 
