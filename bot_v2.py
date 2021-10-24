@@ -1,4 +1,3 @@
-    import pip
 import discord
 import asyncio
 import os
