@@ -289,8 +289,9 @@ class Music(commands.Cog):
             requests_url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlist_id + "&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA"
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
-            async for item in json_file['items']:
+            for item in json_file['items']:
                 await self.play_internal(ctx, item['snippet']['resourceId']['videoId'])
+                await asyncio.sleep(1)
                 #await ctx.send(item['snippet']['resourceId']['videoId'])
 
 
