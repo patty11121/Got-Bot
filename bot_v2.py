@@ -1,6 +1,9 @@
+import pip
 import discord
 import asyncio
 import os
+import git
+import sys
 import youtube_dl
 from youtube_search import YoutubeSearch
 
@@ -126,7 +129,7 @@ class Music(commands.Cog):
         await channel.connect()
 
     @commands.command(name="play", aliases=["p"])
-    async def play(self, ctx, url):
+    async def play(self, ctx,*, url):
         """Play a song on with the given url/search terms"""
         try:
             player = await self.get_song(ctx, url)
@@ -253,22 +256,38 @@ class Music(commands.Cog):
     async def got(self, ctx):
         await self.play(ctx, "http://www.youtube.com/watch?v=OQWGQBFIOg0")
     
-    @commands.command(name="TalkGot")
+    @commands.command(name="gottem")
     async def talk(self, ctx):
         f = open("gottext.txt","r")
         y = f.read()
         got10 = ""
-        gotcount = 0
+        gotcount = 10
         for x in range(0,len(y)):
             got10 += y[x]
             gotcount += 1
-            if gotcount == 50:
+            if gotcount == 100:
                 await ctx.send(got10)
                 got10 = ""
                 gotcount = 0
+                
+    @commands.command(name="update")
+    async def update(self, ctx):
+        direct = os.getcwd()
+        await ctx.send(direct)
+        g = git.cmd.Git(direct)
+        g.pull
+        await reboot(direct)
+        
 
 def setup(client):
     client.add_cog(Music(client))
+
+def reboot(direct):
+    args = sys.argv[:]
+    args.insert(0, sys.executable)
+    os.chdir(direct)
+    os.execv(sys.executable, args)
+    exit()
     
     
 if __name__ == '__main__':
