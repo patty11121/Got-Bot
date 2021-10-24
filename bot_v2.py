@@ -125,6 +125,7 @@ class Music(commands.Cog):
         else:
             channel = ctx.message.author.voice.channel
             await ctx.send(f'Connected to ``{channel}``')
+            await ctx.send(__version__)
 
         await channel.connect()
 
@@ -273,7 +274,6 @@ class Music(commands.Cog):
     @commands.command(name="update")
     async def update(self, ctx):
         direct = os.getcwd()
-        await ctx.send("version 0.102")
         os.chdir(direct)
         os.system("python3 updater.py")
         await reboot(direct)
@@ -289,7 +289,10 @@ def reboot(direct):
     os.chdir(direct)
     os.execv(sys.executable, args)
     exit()
-    
+
+def __version__():
+    return "Version 1.1"
+
     
 if __name__ == '__main__':
     bot = commands.Bot(command_prefix='.')
