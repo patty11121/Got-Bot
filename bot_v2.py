@@ -273,7 +273,7 @@ class Music(commands.Cog):
     @commands.command(name="update")
     async def update(self, ctx):
         direct = os.getcwd()
-        await ctx.send("version 0.1")
+        await ctx.send("version 0.101")
         os.chdir(direct)
         os.system("python3 updater.py")
         await reboot(direct)
