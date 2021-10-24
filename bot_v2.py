@@ -125,7 +125,7 @@ class Music(commands.Cog):
         else:
             channel = ctx.message.author.voice.channel
             await ctx.send(f'Connected to ``{channel}``')
-            await ctx.send(__version__)
+            await ctx.send(__version__())
 
         await channel.connect()
 
@@ -291,7 +291,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.1"
+    return "Version 1.1a"
 
     
 if __name__ == '__main__':
