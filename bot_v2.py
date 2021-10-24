@@ -289,10 +289,13 @@ class Music(commands.Cog):
             requests_url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=" + playlist_id + "&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA"
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
-            for item in json_file['items']:
-                ctx.send("adding " + str(len(json_file['items'])) +" items to queue")
-                await asyncio.wait( self.play_internal(ctx, item['snippet']['resourceId']['videoId']))
-                #await ctx.send(item['snippet']['resourceId']['videoId'])
+            loop = asyncio.get_event_loop()
+            ids = loop.run_until_complete(asyncio.gather(*[self.play_internal(ctx, item['snippet']['resourceId']['videoId']) for item in json_file['items']]))
+
+            #for item in json_file['items']:
+            #    ctx.send("adding " + str(len(json_file['items'])) +" items to queue")
+            #    await asyncio.wait( self.play_internal(ctx, item['snippet']['resourceId']['videoId']))
+            #    #await ctx.send(item['snippet']['resourceId']['videoId'])
 
 
         except Exception as e:
