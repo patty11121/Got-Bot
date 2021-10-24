@@ -290,7 +290,7 @@ class Music(commands.Cog):
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
             for item in json_file['items']:
-                await ctx.send("adding " + len(json_file['items']) +" items to queue")
+                await ctx.send("adding " + str(len(json_file['items'])) +" items to queue")
                 await self.play_internal(ctx, item['snippet']['resourceId']['videoId'])
                 #await ctx.send(item['snippet']['resourceId']['videoId'])
 
