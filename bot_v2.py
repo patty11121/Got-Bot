@@ -299,7 +299,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.1a"
+    return "Version 1.1b"
 
     
 if __name__ == '__main__':
