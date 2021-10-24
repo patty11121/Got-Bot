@@ -261,7 +261,7 @@ class Music(commands.Cog):
     async def talk(self, ctx):
         f = open("gottext.txt","r")
         y = f.read()
-        await ctx.send(got10)
+        await ctx.send(y)
         #for x in range(0,len(y)):
         #    got10 += y[x]
         #    gotcount += 1
