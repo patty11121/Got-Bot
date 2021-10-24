@@ -272,10 +272,13 @@ class Music(commands.Cog):
 
     @commands.command(name="playlist")
     async def playlist(self, ctx, url):
-        playlist_id = url.split("list=")[1]
-        r = requests.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId="+playlist_id +"&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA")
-        await ctx.send(r.text)
-        await ctx.send(r.url)
+        try:
+            playlist_id = url.split("list=")[1]
+            r = requests.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId="+playlist_id +"&key=AIzaSyDg97zNz31Z_6ztxKVCmy_kMfzta5jNsHA")
+            await ctx.send(r.text)
+            await ctx.send(r.url)
+        except Exception as e:
+            await ctx.send(e)
                 
     @commands.command(name="update")
     async def update(self, ctx):
@@ -299,7 +302,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.1b"
+    return "Version 1.1b-1"
 
     
 if __name__ == '__main__':
