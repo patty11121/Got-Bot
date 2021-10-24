@@ -141,6 +141,16 @@ class Music(commands.Cog):
             print(e)
             await ctx.send("Somenthing went wrong - please try again later!")
 
+    async def play_internal(self, ctx, url):
+        """Play a song on with the given url/search terms"""
+        try:
+            player = await self.get_song(ctx, url)
+            await self.add_queue(ctx, player)
+            await self.start_playing(ctx)
+        except Exception as e:
+            print(e)
+            await ctx.send("Somenthing went wrong - please try again later!")
+
     @commands.command(name="playtop", aliases=["pt"])
     async def play_top(self, ctx, *, url):
         player = await self.get_song(ctx, url)
@@ -280,7 +290,7 @@ class Music(commands.Cog):
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
             for item in json_file['items']:
-                await self.play(item['snippet']['resourceId']['videoId'])
+                await self.play_internal(item['snippet']['resourceId']['videoId'])
                 #await ctx.send(item['snippet']['resourceId']['videoId'])
 
 
@@ -312,7 +322,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.2B"
+    return "Version 1.2c"
 
     
 if __name__ == '__main__':
