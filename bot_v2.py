@@ -131,7 +131,7 @@ class Music(commands.Cog):
         await channel.connect()
 
     @commands.command(name="play", aliases=["p"])
-    async def play(self, ctx,*, url):
+    async def play(self, ctx, *, url):
         """Play a song on with the given url/search terms"""
         try:
             player = await self.get_song(ctx, url)
@@ -280,7 +280,9 @@ class Music(commands.Cog):
             r = requests.get(requests_url)
             json_file = json.loads(r.text)
             for item in json_file['items']:
-                self.play(ctx, item['snippet']['resourceId']['videoId'])
+                self.play(item['snippet']['resourceId']['videoId'])
+                await ctx.send(item['snippet']['resourceId']['videoId'])
+
 
         except Exception as e:
             await ctx.send(e)
@@ -310,7 +312,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.2"
+    return "Version 1.2a"
 
     
 if __name__ == '__main__':
