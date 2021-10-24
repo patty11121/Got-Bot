@@ -281,7 +281,7 @@ class Music(commands.Cog):
             json_file = json.loads(r.text)
             for item in json_file['items']:
                 await self.play(item['snippet']['resourceId']['videoId'])
-                await ctx.send(item['snippet']['resourceId']['videoId'])
+                #await ctx.send(item['snippet']['resourceId']['videoId'])
 
 
         except Exception as e:
@@ -312,7 +312,7 @@ def reboot(direct):
     exit()
 
 def __version__():
-    return "Version 1.2a"
+    return "Version 1.2B"
 
     
 if __name__ == '__main__':
