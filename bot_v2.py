@@ -280,6 +280,8 @@ class Music(commands.Cog):
             await ctx.send(playlist_id)
         except Exception as e:
             await ctx.send(e)
+            await ctx.send(playlist_id)
+
                 
     @commands.command(name="update")
     async def update(self, ctx):
