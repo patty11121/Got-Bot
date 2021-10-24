@@ -276,6 +276,7 @@ class Music(commands.Cog):
         await ctx.send("version 0.10")
         os.system('update.py')
         await reboot(direct)
+        #help
         
 
 def setup(client):
