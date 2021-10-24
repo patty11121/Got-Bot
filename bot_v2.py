@@ -294,7 +294,7 @@ class Music(commands.Cog):
 
             ctx.send("adding " + str(len(json_file['items'])) +" items to queue")
             for item in json_file['items']:
-                get_url = "https://www.youtube.com/watch?v=item" + ['snippet']['resourceId']['videoId']))
+                get_url = "https://www.youtube.com/watch?v=item" + ['snippet']['resourceId']['videoId']
                 player = await self.get_song(ctx, get_url)
                 self.queue.append(player)
                 #await ctx.send(item['snippet']['resourceId']['videoId'])
