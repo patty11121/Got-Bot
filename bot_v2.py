@@ -280,7 +280,7 @@ class Music(commands.Cog):
         os.chdir(direct)
         await ctx.send("begining update - use .join to rejoin")
         os.system("python3 updater.py")
-        os.system("pip3 install requests")
+       
         await reboot(direct)
         #help
         
