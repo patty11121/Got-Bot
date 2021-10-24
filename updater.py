@@ -3,5 +3,4 @@ import git
 
 direct = os.getcwd()
 print(direct)
-g = git.cmd.Git(direct)
-g.pull
+git.cmd.Git().pull('https://github.com/patty11121/Got-Bot','main')
