@@ -131,7 +131,7 @@ class Music(commands.Cog):
         await channel.connect()
 
     @commands.command(name="play", aliases=["p"])
-    async def play(self, ctx, url):
+    async def play(self, ctx,*, url):
         """Play a song on with the given url/search terms"""
         try:
             player = await self.get_song(ctx, url)
